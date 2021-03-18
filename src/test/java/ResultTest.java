@@ -86,7 +86,7 @@ public class ResultTest {
 
     @Test
     @DisplayName("test 7")
-    public void testGradingStudents_less_than_0_students() {
+    public void testGradingStudents_less_than_0_students_and_negativ_points() {
         List<Integer> grades = Result.gradingStudents(Arrays.asList(-2, -1, -100));
         List<Integer> expected = new ArrayList<>();
 

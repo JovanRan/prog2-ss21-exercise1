@@ -12,38 +12,38 @@ public class Result {
     public static final int List_Position_Zero = 0;
 
     public static List<Integer> gradingStudents(List<Integer> grades) {
-        List<Integer> n = new ArrayList<>(grades);
+        List<Integer> points = new ArrayList<>(grades);
 
         if (grades.get(Min_Amount_Students) < 1 || grades.get(List_Position_Zero) > Max_Amount_Students) {
             return new ArrayList<>();
         }
 
         for (int i = 1; i <= grades.get(List_Position_Zero ); i++) {
-            if (n.get(i) < Min_Amount_Points || n.get(i) > Max_Amount_Points) {
-                n.set(i, 0);
+            if (points.get(i) < Min_Amount_Points || points.get(i) > Max_Amount_Points) {
+                points.set(i, 0);
             }
-            if (n.get(i) >= Min_Points_not_to_fail && n.get(i) <= Max_Points_not_to_fail) {
-                n.set(i, RoundGrade(n.get(i)));
+            if (points.get(i) >= Min_Points_not_to_fail && points.get(i) <= Max_Points_not_to_fail) {
+                points.set(i, roundGrade(points.get(i)));
             }
         }
-        return n;
+        return points;
     }
 
-    public static int RoundGrade(int points) {
+    public static int roundGrade(int points) {
         int finalGrade = points;
-        int x1 = points % 10;
-        int x2 = points % 10;
+        int firstPosition = points % 10;
+        int firstPosition_2 = points % 10;
 
-        if (x1 >= 5) {
-            x1 = 10;
+        if (firstPosition  >= 5) {
+            firstPosition = 10;
         } else {
-            x1 = 5;
+            firstPosition  = 5;
         }
 
-        finalGrade = (finalGrade - x2) + x1;
+        finalGrade = (finalGrade - firstPosition_2) + firstPosition ;
 
         if (finalGrade - points < 3) {
-            finalGrade = (points - x2) + x1;
+            finalGrade = (points - firstPosition_2) + firstPosition ;
         } else {
             finalGrade = points;
         }
